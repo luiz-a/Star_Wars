@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 
 export const Title = styled.h1`
-    background: #;
+    font-family: 'Star Jedi', arial;
+    background: url('https://i.pinimg.com/564x/e0/88/36/e08836bb37900ea1b8ddc756febae6e5.jpg');
     text-align: center;
     margin: 0;
     color: #fff;
     padding: 10px 0;
 `;
 export const Corpo = styled.div`
-    
     height: 100%;
-    div{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+`;
+export const Search = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 export const Barra = styled.div`
     display:flex;
@@ -42,7 +42,7 @@ export const Input = styled.input`
     padding: 10px 20px;
     border: none;
     color: #fff;
-    background: rgba(8, 21, 23, .8);
+    background: rgba(24, 28, 28, .8);
     border-radius: 20px;
 `;
 export const Check = styled.button`
@@ -53,18 +53,58 @@ export const Check = styled.button`
     background: none;
     border-radius: 20px;
 `;
-export const List = styled.ul`
-    list-style: none;
-    margin-top: 40px;
-`;
-export const Txt = styled.li`
-    display: flex;
-    justify-content:center; 
-    align-items: center;
-    font-size: 16px;
+export const List = styled.div`
+    margin-top: 80px;
     color: #fff;
-    p{
-        margin-left: 20px;
-        font-weight: bold;
+    display:grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+`;
+export const Planets = styled.div`
+    grid-column-start: 1;
+    grid-column-end: 1;
+    min-height: 300px;
+    h3{
+        text-align: center;
+    }
+    ul{
+        list-style: none;
+    }
+    li{
+        strong{
+            color: #964141;
+        }
+    }
+`;
+export const Films = styled.div`
+    grid-column-start: 2;
+    grid-column-end: 2;
+    min-height: 300px;
+    h3{
+        text-align: center;
+    }
+    ul{
+        list-style: none;
+    }
+    li{
+        strong{
+            color: #964141;
+        }
+    }
+`;
+export const People = styled.div`
+    grid-column-start: 3;
+    grid-column-end: 3;
+    min-height: 300px;
+    h3{
+        text-align: center;
+    }
+    ul{
+        list-style: none;
+    }
+    li{
+        strong{
+            color: #964141;
+        }
     }
 `;
