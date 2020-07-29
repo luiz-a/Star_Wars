@@ -1,8 +1,8 @@
 import styled from 'styled-components';
+import App from './App'
 
 export const Title = styled.h1`
     font-family: 'Star Jedi', arial;
-    background: url('https://i.pinimg.com/564x/e0/88/36/e08836bb37900ea1b8ddc756febae6e5.jpg');
     text-align: center;
     margin: 0;
     color: #fff;
@@ -64,6 +64,8 @@ export const Planets = styled.div`
     grid-column-start: 1;
     grid-column-end: 1;
     min-height: 300px;
+    opacity: ${({ isVisible }) => isVisible ? 1 : 0};
+    transition: 1s;
     h3{
         text-align: center;
     }
@@ -77,9 +79,30 @@ export const Planets = styled.div`
     }
 `;
 export const Films = styled.div`
+    grid-column-start: 3;
+    grid-column-end: 3;
+    min-height: 300px;
+    opacity: ${({ isVisible }) => isVisible ? 1 : 0};
+    transition: 1s;
+    h3{
+        text-align: center;
+    }
+    ul{
+      
+        list-style: none;
+    }
+    li{
+        strong{
+            color: #964141;
+        }
+    }
+`;
+export const People = styled.div`
     grid-column-start: 2;
     grid-column-end: 2;
     min-height: 300px;
+    opacity: ${({ isVisible }) => isVisible ? 1 : 0};
+    transition: 1s;
     h3{
         text-align: center;
     }
@@ -92,19 +115,9 @@ export const Films = styled.div`
         }
     }
 `;
-export const People = styled.div`
-    grid-column-start: 3;
-    grid-column-end: 3;
-    min-height: 300px;
-    h3{
-        text-align: center;
-    }
-    ul{
-        list-style: none;
-    }
-    li{
-        strong{
-            color: #964141;
-        }
-    }
+export const Message = styled.h2`
+   color: #fff;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 `;

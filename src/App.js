@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import  { Title } from './styled';
 import  { Barra } from './styled';
 import  { Botao } from './styled';
@@ -10,16 +10,71 @@ import  { Planets } from './styled';
 import  { Films } from './styled';
 import  { People } from './styled';
 import  { Search } from './styled';
+import  { Message } from './styled';
 
 
 function App() {
+  const [visivelPlanets, setvisivelPlanets] = useState(false);
+  const [visivelPeople, setvisivelPeople] = useState(false);
+  const [visivelFilms, setvisivelFilms] = useState(false);
+  const [error, setError] = useState(null);
+  const [isloaded, setIsLoaded] = useState(false);
+  const [item01, setItem01] = useState([]);
+  const [item02, setItem02] = useState([]);
+  const [item03, setItem03] = useState([]);
+
+  useEffect(()=> {
+      fetch("https://swapi.dev/api/people/")
+        .then(res => res.json())
+        .then(
+          (result) =>{
+            setIsLoaded(true);
+            setItem01(result.results)
+            
+          })
+  }, [])
+  useEffect(()=> {
+    fetch("https://swapi.dev/api/films/")
+      .then(res => res.json())
+      .then(
+        (result) =>{
+          setIsLoaded(true);
+          setItem02(result.results)
+          
+        })
+}, [])
+useEffect(()=> {
+  fetch("https://swapi.dev/api/planets/")
+    .then(res => res.json())
+    .then(
+      (result) =>{
+        setIsLoaded(true);
+        setItem03(result.results)
+        
+      })
+}, [])
+  function VisivelPlanets(){
+    setvisivelPlanets(!visivelPlanets)
+  }
+  function VisivelPeople(){
+    setvisivelPeople(!visivelPeople)
+  }
+  function VisivelFilms(){
+    setvisivelFilms(!visivelFilms)
+  }
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else if (!isloaded) {
+    return <Message>Carregando . . .</Message>;
+  } else {
   return (
+
     <Corpo>
         <Title>Star Wars</Title>
         <Barra>
-          <Botao>Planetas</Botao>
-          <Botao>Pessoas</Botao>
-          <Botao>Filmes</Botao>
+          <Botao onClick={() => VisivelPlanets()}>Planetas</Botao>
+          <Botao onClick={() => VisivelPeople()}>Pessoas</Botao>
+          <Botao onClick={() => VisivelFilms()}>Filmes</Botao>
         </Barra>
         <Search>
           <Input></Input>
@@ -27,129 +82,57 @@ function App() {
         </Search>
         <div>
           <List>
-              <Planets>
+              <Planets isVisible={visivelPlanets}>
                 <h3>Planets</h3>
                 <div>
-                  <ul>
-                    <li>
-                      <strong>Tatooine</strong>
-                      <p>Período de rotação: </p>
-                      <p>Diâmetro: </p>
-                      <p>Clima: </p>
-                      <p>População :</p>
+                <ul>
+                  {item03.map(item => (
+                  <li key={item.name}>
+                      <strong>{item.name}</strong>
+                      <p>Período de rotação: {item.rotation_period}</p>
+                      <p>Diâmetro: {item.diameter}</p>
+                      <p>Clima: {item.climate}</p>
+                      <p>População: {item.population}</p>
                     </li>
-                    <li>
-                      <strong>Alderaan</strong>
-                      <p>Período de rotação: </p>
-                      <p>Diâmetro: </p>
-                      <p>Clima: </p>
-                      <p>População :</p>
-                    </li>
-                    <li>
-                      <strong>Yavin IV</strong>
-                      <p>Período de rotação: </p>
-                      <p>Diâmetro: </p>
-                      <p>Clima: </p>
-                      <p>População :</p>
-                    </li>
-                    <li>
-                      <strong>Hoth</strong>
-                      <p>Período de rotação: </p>
-                      <p>Diâmetro: </p>
-                      <p>Clima: </p>
-                      <p>População :</p>
-                    </li>
-                  
-
+                    ))}
                   </ul>
                 </div>
               </Planets>
-              <Films>
-               <h3>Filmes</h3>
-               <div>
-                  <ul>
-                  <div>
-                  <ul>
-                    <li>
-                      <strong>A New Hope</strong>
-                      <p>Episódeo: </p>
-                      <p>Texto de Abertura: </p>
-                      <p>Ano de Lançamento: </p>
-                      <p>População :</p>
-                    </li>
-                    <li>
-                      <strong>The Empire Strikes Back</strong>
-                      <p>Episódeo: </p>
-                      <p>Texto de Abertura: </p>
-                      <p>Ano de Lançamento: </p>
-                      <p>População :</p>
-                    </li>
-                    <li>
-                      <strong>Return of the Jedi</strong>
-                      <p>Episódeo: </p>
-                      <p>Texto de Abertura: </p>
-                      <p>Ano de Lançamento: </p>
-                      <p>População :</p>
-                    </li>
-                    <li>
-                      <strong>The Phantom Menace</strong>
-                      <p>Episódeo: </p>
-                      <p>Texto de Abertura: </p>
-                      <p>Ano de Lançamento: </p>
-                      <p>População :</p>
-                    </li>
-
-                  </ul>
-                </div>
-                  </ul>
-                </div>
-              </Films>
-              <People>
+              <People isVisible={visivelPeople}>
                 <h3>Pessoas</h3>
                 <div>
                   <ul>
-                  <li>
-                      <strong>Luke Skywalker</strong>
-                      <p>Ano Aniversário: </p>
-                      <p>Gênero: </p>
+                  {item01.map(item => (
+                  <li key={item.name}>
+                      <strong>{item.name}</strong>
+                      <p>Ano Aniversário: {item.birth_year}</p>
+                      <p>Gênero:  {item.gender}</p>
                     </li>
-                    <li>
-                      <strong>C-3PO</strong>
-                      <p>Ano Aniversário: </p>
-                      <p>Gênero: </p>
-                    </li>
-                    <li>
-                      <strong>R2-D2</strong>
-                      <p>Ano Aniversário: </p>
-                      <p>Gênero: </p>
-                    </li>
-                    <li>
-                      <strong>Darth Vader</strong>
-                      <p>Ano Aniversário: </p>
-                      <p>Gênero: </p>
-                    </li>
-                    <li>
-                      <strong>Leia Organa</strong>
-                      <p>Ano Aniversário: </p>
-                      <p>Gênero: </p>
-                    </li>
-                    <li>
-                      <strong>Owen Lars</strong>
-                      <p>Ano Aniversário: </p>
-                      <p>Gênero: </p>
-                    </li>
-                    <li>
-                      <strong>Beru Whitesun lars</strong>
-                      <p>Ano Aniversário: </p>
-                      <p>Gênero: </p>
-                    </li>
+                    ))}
                   </ul>
                 </div>
               </People>
+              <Films isVisible={visivelFilms}>
+               <h3>Filmes</h3>
+               <div>
+               <ul>
+                  {item02.map(item => (
+                  <li key={item.title}>
+                      <strong>{item.title}</strong>
+                      <p>Episódeo: {item.episode_id}</p>
+                      <p>Texto de Abertura: {item.opening_crawl}</p>
+                      <p>Ano de Lançamento: {item.release_date}</p>
+                    </li>
+                    ))}
+                  </ul>
+                </div>
+              </Films>
+       
           </List>
         </div>
     </Corpo>
   );
+}
 }
 
 export default App;
