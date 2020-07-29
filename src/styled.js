@@ -10,6 +10,7 @@ export const Title = styled.h1`
 `;
 export const Corpo = styled.div`
     height: 100%;
+    position: relative;
 `;
 export const Search = styled.div`
     display: flex;
@@ -65,7 +66,6 @@ export const Planets = styled.div`
     grid-column-end: 1;
     min-height: 300px;
     opacity: ${({ isVisible }) => isVisible ? 1 : 0};
-    transition: 1s;
     h3{
         text-align: center;
     }
@@ -73,8 +73,14 @@ export const Planets = styled.div`
         list-style: none;
     }
     li{
-        strong{
+        button{
+            margin: 20px;
+            outline: none;
             color: #964141;
+            background: none;
+            border: none;
+            font-weight: bold;
+            font-size: 16px;
         }
     }
 `;
@@ -83,7 +89,6 @@ export const Films = styled.div`
     grid-column-end: 3;
     min-height: 300px;
     opacity: ${({ isVisible }) => isVisible ? 1 : 0};
-    transition: 1s;
     h3{
         text-align: center;
     }
@@ -97,12 +102,39 @@ export const Films = styled.div`
         }
     }
 `;
+export const Modal = styled.div`
+
+         /* display: none; 
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background: rgba(0,0,0,.1); 
+    div{
+        position: absolute;
+        top: 50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        width: 200px;
+        height: 200px;
+        background: #fff;
+        padding: 40px 60px;
+        border-radius: 20px;
+        p{
+            color: #000;
+            margin-top: 20px
+        }
+    } */
+
+`;
 export const People = styled.div`
     grid-column-start: 2;
     grid-column-end: 2;
     min-height: 300px;
     opacity: ${({ isVisible }) => isVisible ? 1 : 0};
-    transition: 1s;
     h3{
         text-align: center;
     }
