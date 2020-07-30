@@ -1,6 +1,6 @@
 # App Star Wars
 
-    **O app tem como funcionalidade a listagem de planetas, personagens e filmes do _Star-Wars_. Tendo a possibilidade de fazer buscas com a informação de cada lista.**
+   *O app tem como funcionalidade a listagem de planetas, personagens e filmes do Star-Wars. Tendo a possibilidade de fazer buscas com a informação de cada lista.*
 
 ## Acessibilidade
 - [x] Lista de Planetas, mostrando seus nomes, período de rotação, diâmetro, clima e população.
@@ -38,6 +38,7 @@
  - Styled-Components.
 
  ## Como Instalar o App
+
 
 
  ## Como Executar o App 
