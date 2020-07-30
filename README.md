@@ -1,5 +1,5 @@
 # Feito
-[x] Lista de Planetas, mostrando seus nomes, período de rotação, diâmetro, clima e população.
+- [x] Lista de Planetas, mostrando seus nomes, período de rotação, diâmetro, clima e população.
 
 [x] Lista de Pessoas, mostra nome, ano do seu aniversário e seu gênero.
 
