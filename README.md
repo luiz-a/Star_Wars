@@ -1,4 +1,8 @@
-# Feito
+# App Star Wars
+
+    **O app tem como funcionalidade a listagem de planetas, personagens e filmes do _Star-Wars_. Tendo a possibilidade de fazer buscas com a informação de cada lista.**
+
+## Acessibilidade
 - [x] Lista de Planetas, mostrando seus nomes, período de rotação, diâmetro, clima e população.
 
 - [x] Lista de Pessoas, mostra nome, ano do seu aniversário e seu gênero.
@@ -17,8 +21,6 @@
 
 - [x] A busca de Filme terá como resultado, seu Título, Episódio, Texto de abertura, Ano de lançamento.
 
-# Coisas à fazer
-
 - [ ] Resultado de Filmes e Residentes em Planetas.
 
 - [ ] Resultado de Filmes em Personagens.
@@ -31,13 +33,11 @@
 
 - [ ] Responsivo.
 
-# Bibliotecas Usadas
+## Bibliotecas Usadas
 
- - useState.
  - Styled-Components.
- - React-DOM.
 
  ## Como Instalar o App
 
 
- ## Como Execultar o App 
+ ## Como Executar o App 
