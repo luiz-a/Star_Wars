@@ -4,13 +4,11 @@ import { Barra } from './styled';
 import { Botao } from './styled';
 import { Input } from './styled';
 import { Check } from './styled';
-import { Corpo } from './styled';
 import { List } from './styled';
 import { Planets } from './styled';
 import { Films } from './styled';
 import { People } from './styled';
 import { Search } from './styled';
-import { Modal } from './styled';
 
 
 function App() {
@@ -56,57 +54,51 @@ function App() {
       .then(res => res.json())
       .then(
         (result) => {
-          setPlanetas(result.results)
-          setvisivelPlanets(!visivelPlanets)
+          const list = result.results;
+          if(list){
+          setPlanetas(list)
+          setvisivelPlanets(true)
+        } else {
+          setvisivelPlanets(false)
+        }
         });
     fetch(`https://swapi.dev/api/people/?search=${search}`)
       .then(res => res.json())
       .then(
         (result) => {
-          setPessoas(result.results)
-          setvisivelPeople(!visivelPeople)
+          const list = result.results;
+          if(list){
+          setPessoas(list)
+          setvisivelPeople(true)
+        } else {
+          setvisivelPeople(false)
+        }
         });
     fetch(`https://swapi.dev/api/films/?search=${search}`)
       .then(res => res.json())
       .then(
         (result) => {
-          setFilmes(result.results)
-          setvisivelFilms(!visivelFilms)
+          const list = result.results
+          if(list){
+          setFilmes(list)
+          setvisivelFilms(true)
+        } else{
+          setvisivelFilms(false)
+        }
         }
       );
-    fetch(`https://swapi.dev/api/planets/`)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          const List = result.results;
-          const NewList = List.filter((pop) => Number (pop.population) >= Number (search))
-          setvisivelPlanets(!visivelPlanets);
-          setPlanetas(NewList)
-        });
-        fetch(`https://swapi.dev/api/planets/`)
-        .then(res => res.json())
-        .then(
-          (result) => {
-            const List = result.results;
-            const NewList = List.filter((cli) => String (cli.climate) === String (search))
-            setvisivelPlanets(!visivelPlanets);
-            setPlanetas(NewList)
-          });
-  }
-  function OpenModal() {
-     
   }
   return (
 
-    <Corpo>
+    <div>
       <Title>Star Wars</Title>
       <Barra>
-        <Botao onClick={() => VisivelPlanets()}>Planetas</Botao>
-        <Botao onClick={() => VisivelPeople()}>Pessoas</Botao>
-        <Botao onClick={() => VisivelFilms()}>Filmes</Botao>
+        <Botao isVisible={visivelPlanets} onClick={() => VisivelPlanets()}>Planetas</Botao>
+        <Botao isVisible={visivelPeople} onClick={() => VisivelPeople()}>Pessoas</Botao>
+        <Botao isVisible={visivelFilms} onClick={() => VisivelFilms()}>Filmes</Botao>
       </Barra>
       <Search>
-        <Input onInput={(e) => setSearch(e.target.value)}></Input>
+        <Input onInput={(e) => setSearch(e.target.value)} placeholder="Digite aqui..."></Input>
         <Check onClick={() => Procurar()}>Pesquisar</Check>
       </Search>
       <div>
@@ -117,16 +109,11 @@ function App() {
               <ul>
                 {planetas.map(item => (
                   <li key={item.name}>
-                    <button onClick={() => OpenModal()}>{item.name}</button>
-                    <Modal>
-                      <div>
-
+                    <strong>{item.name}</strong>
                         <p>Período de rotação: {item.rotation_period}</p>
                         <p>Diâmetro: {item.diameter}</p>
                         <p>Clima: {item.climate}</p>
                         <p>População: {item.population}</p>
-                      </div>
-                    </Modal>
                   </li>
                 ))}
               </ul>
@@ -154,7 +141,7 @@ function App() {
                   <li key={item.title}>
                     <strong>{item.title}</strong>
                     <p>Episódeo: {item.episode_id}</p>
-                    <p>Texto de Abertura: {item.opening_crawl}</p>
+                    <p>Texto de Abertura: { item.opening_crawl}</p>
                     <p>Ano de Lançamento: {item.release_date}</p>
                   </li>
                 ))}
@@ -164,7 +151,7 @@ function App() {
 
         </List>
       </div>
-    </Corpo>
+    </div>
   );
 }
 

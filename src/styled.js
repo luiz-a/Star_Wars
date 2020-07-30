@@ -1,23 +1,19 @@
 import styled from 'styled-components';
-import App from './App'
 
 export const Title = styled.h1`
     font-family: 'Star Jedi', arial;
     text-align: center;
     margin: 0;
     color: #fff;
-    padding: 10px 0;
-`;
-export const Corpo = styled.div`
-    height: 100%;
-    position: relative;
 `;
 export const Search = styled.div`
+    box-sizing:border-box;
     display: flex;
     justify-content: center;
     align-items: center;
 `;
 export const Barra = styled.div`
+    box-sizing:border-box;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -26,14 +22,16 @@ export const Botao = styled.button`
     outline: none;
     display:flex;
     justify-content: center;
-    align-items: center;
-    margin: 40px;
-    padding: 10px 20px;
+    align-items: center;  
+    margin: 40px ;
+    padding: 10px 60px;
     font-size: 18px;
     color: #fff;
-    border: .8px solid #fff;
+    border: .8px solid rgba(245, 245, 245, .4);
+    box-shadow: 0px 0px 20px #3f698f ;
     background: none;
     border-radius: 60px;
+    opacity: ${({ isVisible }) => isVisible ? .4 : 1};
 `;
 
 export const Input = styled.input`
@@ -41,16 +39,16 @@ export const Input = styled.input`
     margin: 10px;
     display: flex;
     padding: 10px 20px;
-    border: none;
+    background: none;
     color: #fff;
-    background: rgba(24, 28, 28, .8);
+    border: .6px solid rgba(214, 214, 214, .6);
     border-radius: 20px;
 `;
 export const Check = styled.button`
     outline: none;
-    padding: 10px 15px;
-    color: #fff;
-    border: .5px solid #fff;
+    padding: 5px 15px;
+    color: #c3c3c3;
+    border: .4px solid #c3c3c3;
     background: none;
     border-radius: 20px;
 `;
@@ -73,12 +71,8 @@ export const Planets = styled.div`
         list-style: none;
     }
     li{
-        button{
-            margin: 20px;
-            outline: none;
-            color: #964141;
-            background: none;
-            border: none;
+        strong{
+            color: #708499;
             font-weight: bold;
             font-size: 16px;
         }
@@ -98,38 +92,13 @@ export const Films = styled.div`
     }
     li{
         strong{
-            color: #964141;
+            color: #709978;
+            font-weight: bold;
+            font-size: 16px;
         }
     }
 `;
-export const Modal = styled.div`
 
-         /* display: none; 
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%; 
-        height: 100%; 
-        overflow: auto; 
-        background: rgba(0,0,0,.1); 
-    div{
-        position: absolute;
-        top: 50%;
-        left:50%;
-        transform: translate(-50%,-50%);
-        width: 200px;
-        height: 200px;
-        background: #fff;
-        padding: 40px 60px;
-        border-radius: 20px;
-        p{
-            color: #000;
-            margin-top: 20px
-        }
-    } */
-
-`;
 export const People = styled.div`
     grid-column-start: 2;
     grid-column-end: 2;
@@ -143,7 +112,9 @@ export const People = styled.div`
     }
     li{
         strong{
-            color: #964141;
+            color: #997070;
+            font-weight: bold;
+            font-size: 16px;
         }
     }
 `;
