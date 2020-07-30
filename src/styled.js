@@ -28,10 +28,9 @@ export const Botao = styled.button`
     font-size: 18px;
     color: #fff;
     border: .8px solid rgba(245, 245, 245, .4);
-    box-shadow: 0px 0px 20px #3f698f ;
     background: none;
     border-radius: 60px;
-    opacity: ${({ isVisible }) => isVisible ? .4 : 1};
+    box-shadow: ${({ isVisible }) => isVisible ? '0px 0px 30px #3f698f' : ''};
 `;
 
 export const Input = styled.input`

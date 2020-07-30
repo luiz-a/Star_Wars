@@ -49,42 +49,46 @@ function App() {
         }
       );
   }
+
   function Procurar() {
+    if (!search) {
+      return;
+    }
     fetch(`https://swapi.dev/api/planets/?search=${search}`)
       .then(res => res.json())
       .then(
         (result) => {
           const list = result.results;
-          if(list){
-          setPlanetas(list)
-          setvisivelPlanets(true)
-        } else {
-          setvisivelPlanets(false)
-        }
+          if (list.length > 0) {
+            setPlanetas(list)
+            setvisivelPlanets(true)
+          } else {
+            setvisivelPlanets(false)
+          }
         });
     fetch(`https://swapi.dev/api/people/?search=${search}`)
       .then(res => res.json())
       .then(
         (result) => {
           const list = result.results;
-          if(list){
-          setPessoas(list)
-          setvisivelPeople(true)
-        } else {
-          setvisivelPeople(false)
-        }
+          if (list.length > 0) {
+            setPessoas(list)
+            setvisivelPeople(true)
+          } else {
+            setvisivelPeople(false)
+          }
         });
     fetch(`https://swapi.dev/api/films/?search=${search}`)
       .then(res => res.json())
       .then(
         (result) => {
           const list = result.results
-          if(list){
-          setFilmes(list)
-          setvisivelFilms(true)
-        } else{
-          setvisivelFilms(false)
-        }
+          if (list.length > 0) {
+            setFilmes(list)
+            setvisivelFilms(true)
+          } else {
+            setvisivelFilms(false)
+          }
         }
       );
   }
@@ -110,10 +114,10 @@ function App() {
                 {planetas.map(item => (
                   <li key={item.name}>
                     <strong>{item.name}</strong>
-                        <p>Período de rotação: {item.rotation_period}</p>
-                        <p>Diâmetro: {item.diameter}</p>
-                        <p>Clima: {item.climate}</p>
-                        <p>População: {item.population}</p>
+                    <p>Período de rotação: {item.rotation_period}</p>
+                    <p>Diâmetro: {item.diameter}</p>
+                    <p>Clima: {item.climate}</p>
+                    <p>População: {item.population}</p>
                   </li>
                 ))}
               </ul>
@@ -140,8 +144,8 @@ function App() {
                 {filmes.map(item => (
                   <li key={item.title}>
                     <strong>{item.title}</strong>
-                    <p>Episódeo: {item.episode_id}</p>
-                    <p>Texto de Abertura: { item.opening_crawl}</p>
+                    <p>Episódio: {item.episode_id}</p>
+                    <p>Texto de Abertura: {item.opening_crawl}</p>
                     <p>Ano de Lançamento: {item.release_date}</p>
                   </li>
                 ))}
