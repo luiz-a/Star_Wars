@@ -115,6 +115,7 @@ function App() {
                   <li key={item.name}>
                     <strong>{item.name}</strong>
                     <p>Período de rotação: {item.rotation_period}</p>
+                    <p>Período de órbita: {item.orbital_period}</p>
                     <p>Diâmetro: {item.diameter}</p>
                     <p>Clima: {item.climate}</p>
                     <p>População: {item.population}</p>
